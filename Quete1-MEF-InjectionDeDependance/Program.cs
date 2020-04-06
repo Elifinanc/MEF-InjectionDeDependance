@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
-
+using System.Reflection;
 
 namespace Quete1_MEF_InjectionDeDependance
 {
@@ -32,7 +32,7 @@ namespace Quete1_MEF_InjectionDeDependance
             {
                 if (_container == null)
                 {
-                    var catalog = new DirectoryCatalog(".", "Quete1_MEF_InjectionDeDependance.*");
+                    AssemblyCatalog catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
                     _container = new CompositionContainer(catalog);
                 }
                 return _container;
